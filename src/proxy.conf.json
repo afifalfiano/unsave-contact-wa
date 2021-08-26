@@ -1,5 +1,5 @@
 {
-    "*": {
+    "/v1": {
         "target": "https://api.whatsapp.com",
         "secure": false,
         "logLevel": "debug"
