@@ -68,7 +68,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "unsave-contact-wa:build"
+            "browserTarget": "unsave-contact-wa:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
