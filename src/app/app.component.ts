@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NavigationEnd, Router } from '@angular/router';
+
+declare var ga: any;
 
 @Component({
   selector: 'app-root',
@@ -13,7 +16,16 @@ export class AppComponent {
     phone: new FormControl('62', [Validators.required])
   });
   constructor(
-  ){}
+    public router: Router
+  ){
+    this.router.events.subscribe(event => {
+
+      if (event instanceof NavigationEnd) {
+        ga('set', 'page', event.urlAfterRedirects);
+        ga('send', 'pageview');
+      }
+    });
+  }
 
   onSubmit(form: FormGroup): any {
     if (form.valid) {
