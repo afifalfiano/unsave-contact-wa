@@ -13,7 +13,8 @@ export class AppComponent {
   title = 'unsave-contact-wa';
   correctValue: boolean | undefined;
   formWA: FormGroup = new FormGroup({
-    phone: new FormControl('62', [Validators.required])
+    message: new FormControl('Hallo', [Validators.required]),
+    phone: new FormControl('62', [Validators.required]),
   });
   constructor(
     public router: Router
@@ -31,7 +32,7 @@ export class AppComponent {
     if (form.valid) {
     this.correctValue = true;
     const url = 'https://api.whatsapp.com/send?phone=';
-    window.open(url + form.value.phone);
+    window.open(url + form.value.phone + '&text=' + form.value.message);
     }
   }
 }
